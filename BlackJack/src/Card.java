@@ -46,5 +46,27 @@ public class Card {
 		}
 			
 	}
+	
+	/**
+	 * Returns a String representation of the Card (ex. ACE OF SPADES)
+	 */
+	@Override
+	public String toString() {
+		return type + " of " + suit + "S";
+	}
+	
+	/**
+	 * @return the suit of the card
+	 */
+	public Suit getSuit() {
+		return suit;
+	}
+	
+	/**
+	 * @return the type of the card
+	 */
+	public Type getType() {
+		return type;
+	}
 
 }
