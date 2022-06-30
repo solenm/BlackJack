@@ -68,5 +68,13 @@ public class Card {
 	public Type getType() {
 		return type;
 	}
+	
+	/**
+	 * Don't worry about this method. This is for the Graphical User Interface
+	 * @return the image of the card
+	 */
+	public Image getImage() {
+		return new Image("file:classic-cards/" + this.getType() + "" + this.getSuit() + ".png");
+	}
 
 }
