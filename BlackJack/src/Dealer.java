@@ -35,6 +35,50 @@ public class Dealer {
 	}
 	
 	/**
+	 * A method to check if the dealer has busted
+	 * @return boolean true if the dealer has busted
+	 */
+	public boolean busted() {
+		if(BlackJack.getValueOfHand(hand) > 21)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	/**
+	 * A method to check if the dealer will draw a card.
+	 * @return
+	 */
+	public boolean isDone() {
+		if( BlackJack.getValueOfHand(hand) > 17 || hand.getCards().length > 5)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	/**
+	 * Returns the dealers cards to the deck
+	 * @param d Deck to return the cards to
+	 */
+	public void returnCardstoDeck(Deck d) {
+		//loop to return cards to deck
+		for(int count= 0; count < hand.getCards().length; count++)
+		{
+			d.addToBottom(hand.getCards()[count]);
+		}
+		//empty hand
+		hand.emptyHand();
+	}
+	
+	/**
 	 * @return Hand the dealer's hand
 	 */
 	public Hand getHand() {
