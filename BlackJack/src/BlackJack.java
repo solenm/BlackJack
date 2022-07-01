@@ -73,6 +73,54 @@ public class BlackJack {
 	}
 	
 	/**
+	 * Returns the maximum value of the hand that does not result in a bust
+	 * @param h Hand whose value is returned
+	 * @return value of h
+	 */
+	public static int getValueOfHand(Hand h) {
+		//local variables
+		int ace= 0;
+		int hand= 0;
+		int aceCounter= 0;
+		boolean e11= false;
+		//loop to check value of cards in the hand
+		for(int counter= 0; counter < h.size(); counter++)
+		{
+			if( getValueOfCard(h.getCards()[counter]) == 1)
+			{
+				ace++;
+			}
+			else
+			{
+				hand= hand +  getValueOfCard(h.getCards()[counter]);
+			}
+			
+		}
+		aceCounter= ace;
+		//loop to determine the value of each ace
+		for(int count= 0; count < aceCounter; count++)
+		{
+			if( getValueOfCard(h.getCards()[count]) < 11)
+			{
+				hand= hand + 11;
+				ace--;
+				e11= true;
+			}
+			else
+			{
+				hand= hand + ace;
+			}
+				
+		}
+		if(hand > 21 && e11)
+		{
+			hand= hand-10;
+		}
+		return hand;
+	}
+
+	
+	/**
 	 * @return Deck used to play
 	 */
 	public Deck getDeck() {
