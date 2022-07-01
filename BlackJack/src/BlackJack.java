@@ -13,7 +13,11 @@ public class BlackJack {
 		//shuffle
 		deck.shuffle();
 		//player & dealer hands
-		
+		player.getHand().addCard(deck.draw());
+		player.getHand().addCard(deck.draw());
+		dealer.getHand().addCard(deck.draw());
+		dealer.getHand().addCard(deck.draw());
+
 	}
 	
 	/**
