@@ -82,5 +82,33 @@ public class Hand {
 		return array;
 	}
 	
+	/**
+	 * Returns a String representation of the hand
+	 * 
+	 * E.g.
+	 * 
+	 * "Empty Hand"
+	 * "1. ACE OF SPADES\n2. QUEEN OF HEARTS"
+	 * 
+	 * @return a String representing the hand
+	 */
+	@Override
+	public String toString() {
+		
+		String hand = "";
+		//if hand is empty
+		if(cards.length == 0)
+		{
+			return "Empty Hand";
+		}
+		//loop for toString
+		for(int count= 0; count < cards.length-1; count++)
+		{
+			
+			hand = count + ". " + cards[count];
+		}
+		return hand;
+			
+	}
 
 }
