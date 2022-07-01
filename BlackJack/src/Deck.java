@@ -104,4 +104,26 @@ public class Deck {
 		
  	}
 
+	/**
+	 * Shuffles the deck by swapping the cards 100 times
+	 */
+	public void shuffle() {
+		shuffle(100);
+	}
+	/**
+	 * Shuffles the deck by swapping cards n times
+	 * @param n number of swaps
+	 */
+	public void shuffle(int n) {
+		//create random object
+		Random r= new Random();
+		//loop to shuffle 
+		for(int shuffle= 0; shuffle < n; shuffle++)
+		{
+			int x= r.nextInt(numCardsInDeck);
+			int y= r.nextInt(numCardsInDeck);
+			swap(x,y);
+		}
+		
+	}
 }
