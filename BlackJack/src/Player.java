@@ -12,5 +12,12 @@ public class Player {
 		hand= new Hand();
 	}
 	
+	
+	/**
+	 * @return the player's hand
+	 */
+	public Hand getHand() {
+		return hand;
+	}
 
 }
