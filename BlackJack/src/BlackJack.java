@@ -21,6 +21,27 @@ public class BlackJack {
 	}
 	
 	/**
+	 * Restarts in a few steps
+	 * 1. The Player and dealer return their cards to the deck.
+	 * 2. The deck is shuffled.
+	 * 3. Both the player and the dealer receive two cards drawn form the top of the deck.
+	 */
+	public void restart() {
+		//player and dealer return hands to deck
+		player.returnCardstoDeck(deck);
+		dealer.returnCardstoDeck(deck);
+		//shuffle
+		deck.shuffle();
+		//player and dealer hands
+		player.getHand().addCard(deck.draw());
+		player.getHand().addCard(deck.draw());
+		dealer.getHand().addCard(deck.draw());
+		dealer.getHand().addCard(deck.draw());
+		
+		
+	}
+	
+	/**
 	 * Returns the value of a card in a standard game of Blackjack based on the type of the card
 	 * ex. An Ace would return 1, a 2 would return 2... 
 	 * @param c card whose value is extracted
