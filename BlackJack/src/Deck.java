@@ -69,4 +69,39 @@ public class Deck {
 		cards[b]= holder;
 		
 	}
+	
+	/**
+	 * Shifts all the cards in the deck right by one place
+	 */
+	private void shiftRightOne() {
+		//card array
+		Card[] array= new Card[numCardsInDeck+1];
+		//loop to fill array of next cards over
+		for(int count= 0; count < cards.length; count++)
+		{
+			array[count+1]= cards[count];
+		}
+		cards= array;
+	}	
+	/**
+	 * Add c to the bottom of the deck
+	 * Print "Deck Full" when count equals the size of the deck
+	 * @param c card to add
+	 */	
+	public void addToBottom(Card c) {
+		//if deck is less than 52
+		if(numCardsInDeck < 52)
+		{
+			//shift right and take first card
+			shiftRightOne();
+			cards[0]= c;
+			numCardsInDeck++;
+		}
+		else
+		{
+			System.out.println("Error Deck is already full.");
+		}
+		
+ 	}
+
 }
