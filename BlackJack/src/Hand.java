@@ -62,5 +62,25 @@ public class Hand {
 		return array;
 	}
 	
+	/**
+	 * Empties the hand, and returns an array containing the discarded cards.
+	 * 
+	 * @return the discarded cards
+	 */
+	public Card[] emptyHand() {
+		//card object
+		Card[] array= new Card[cards.length];
+		//loop to fill array
+		for(int count= 0; count < cards.length; count++)
+		{
+			
+			array[count]= this.cards[count];
+		}
+		//empty array
+		this.cards= new Card[0];
+		
+		return array;
+	}
+	
 
 }
