@@ -37,5 +37,30 @@ public class Hand {
 		cards= array;
 		
 	}
+	
+	/**
+	 * @return number of cards in the hand
+	 */
+	public int size() {
+		return cards.length;
+	}
+	
+	/**
+	 * Returns an array of all the cards in the hand
+	 * 
+	 * @return the cards in the hand
+	 */
+	public Card[] getCards() {
+		// card object
+		Card[] array= new Card[cards.length];
+		//loop to fill array
+		for(int count= 0; count < cards.length; count++)
+		{
+			
+			array[count]= this.cards[count];
+		}
+		return array;
+	}
+	
 
 }
