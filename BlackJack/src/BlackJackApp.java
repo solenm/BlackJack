@@ -91,7 +91,59 @@ public class BlackJackApp extends Application {
 		stay.setImage(stayUp);
 		stay.setTranslateX(-20);
 		stay.setTranslateY(200);
+		
+		round = 1;
+		root = new StackPane();
+		playerTurn = false;
+
+		root.getChildren().add(hit);
+		root.getChildren().add(stay);
+		root.getChildren().add(dealerWinsText);
+		root.getChildren().add(playerWinsText);
+		root.getChildren().add(playerScoreText);
+		Scene scene = new Scene(root, 800, 500);
+		scene.setFill(Color.DARKGREEN);
+		primaryStage.setTitle("BlackJack");
+		primaryStage.setScene(scene);
+		primaryStage.show();
+		// start game
+
+		newGame();
+		playerTurn = true;
 	}
+	
+	
+	private void newGame() {
+		game.restart();
+		playerWinsText.setText("Player wins: " + playerWins);
+		dealerWinsText.setText("Dealer wins: " + dealerWins);
+		round = 1;
+		Card [] pCards = game.getPlayer().getHand().getCards();
+		Card [] dCards = game.getDealer().getHand().getCards();
+		for(int i = 0; i < pCards.length; i++) {
+			playerCards[i] = new ImageView();
+			playerCards[i].setImage(pCards[i].getImage());
+			playerCards[i].setTranslateX(-200 + i*100);
+			playerCards[i].setTranslateY(100);
+			root.getChildren().add(playerCards[i]);
+			cardFlip.play();
+		}
+
+		for(int i = 0; i < dCards.length; i++) {
+			dealerCards[i] = new ImageView();
+			dealerCards[i].setImage(dCards[i].getImage());
+			dealerCards[i].setTranslateX(200 - i*100);
+			dealerCards[i].setTranslateY(-100);
+			if(i == 0)
+				root.getChildren().add(dealerCards[i]);
+			else
+				root.getChildren().add(hole);
+			cardFlip.play();
+		}
+		playerScoreText.setText("Player score: " + BlackJack.getValueOfHand(game.getPlayer().getHand()));
+		playerTurn();
+	}
+
 	
 	private void dealerTurn() {
 		Card c = game.getDealer().playTurn(game.getDeck());
@@ -108,4 +160,6 @@ public class BlackJackApp extends Application {
 	private void playerTurn() {
 		playerTurn = true;
 	}
+	
+	
 }
