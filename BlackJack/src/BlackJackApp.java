@@ -50,6 +50,62 @@ public class BlackJackApp extends Application {
 		playerScoreText.setTranslateY(-190);
 		cardFlip = new AudioClip("file:classic-cards/cardPlace1.wav");
 		clapping = new AudioClip("file:classic-cards/wellDone.wav");
-		
+		//initialize buttons
+		hole = new ImageView();
+		hole.setTranslateX(100);
+		hole.setTranslateY(-100);
+		hole.setImage(new Image("file:classic-cards/b2fv.png"));
+		hit = new ImageView();
+		hitUp = new Image("file:classic-cards/hit.png");
+		hitDown = new Image("file:classic-cards/hit-down.png");
+		hit.setImage(hitUp);
+		hit.setTranslateX(-200);
+		hit.setTranslateY(200);
+		hit.setOnMousePressed(new EventHandler<MouseEvent>() {
+			public void handle(MouseEvent me) {
+				hit.setImage(hitDown);
+			}
+		});
+		hit.setOnMouseReleased(new EventHandler<MouseEvent>() {
+			public void handle(MouseEvent me) {
+				hit.setImage(hitUp);
+				//if(playerTurn)
+					//playerHit();
+			}
+		});
+		stay = new ImageView();
+		stayUp = new Image("file:classic-cards/stay.png");
+		stayDown = new Image("file:classic-cards/stay-down.png");
+		stay.setOnMousePressed(new EventHandler<MouseEvent>() {
+			public void handle(MouseEvent me) {
+				stay.setImage(stayDown);
+			}
+		});
+		stay.setOnMouseReleased(new EventHandler<MouseEvent>() {
+			public void handle(MouseEvent me) {
+				stay.setImage(stayUp);
+				//if(playerTurn)
+					//playerStay();
+			}
+		});
+		stay.setImage(stayUp);
+		stay.setTranslateX(-20);
+		stay.setTranslateY(200);
+	}
+	
+	private void dealerTurn() {
+		Card c = game.getDealer().playTurn(game.getDeck());
+		if(c != null) {
+			dealerCards[round + 1] = new ImageView();
+			dealerCards[round + 1].setImage(c.getImage());
+			dealerCards[round + 1].setTranslateX(200 - (round + 1)*100);
+			dealerCards[round + 1].setTranslateY(-100);
+			//root.getChildren().add(dealerCards[round + 1]);
+			//cardFlip.play();
+		}
+
+	}
+	private void playerTurn() {
+		playerTurn = true;
 	}
 }
